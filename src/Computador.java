@@ -10,10 +10,12 @@ public class Computador {
     private String serial;
     private Configuracao nome;
     private float potencia;
+    private int laboratorio;
 
-    public Computador(String serial, Configuracao configuracao) {
+    public Computador(String serial, Configuracao configuracao, int laboratorio) {
         this.setSerial(serial);
         this.setConfiguracao(configuracao);
+        this.setLaboratorio(laboratorio);
     }
 
     public String getSerial() {
@@ -33,6 +35,7 @@ public class Computador {
     public Configuracao getConfiguração() {
         return nome;
     }
+
     public void setConfiguracao(Configuracao configuracao) {
         this.nome = configuracao;
     }
@@ -41,8 +44,15 @@ public class Computador {
         return potencia;
     }
 
-    public float setPotencia(float potencia) {
+    public void setPotencia(float potencia) {
         this.potencia = potencia;
     }
 
+    public int getLaboratorio() {
+        return laboratorio;
+    }
+
+    public void setLaboratorio(int laboratorio) {
+        this.laboratorio = laboratorio;
+    }
 }

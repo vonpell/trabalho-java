@@ -43,20 +43,48 @@ public class Configuracao {
         return computadores;
     }
 
-    public List<ItemQuant> getItemQuant() {
+    public List<ItemQuant> listItemQuant() {
         return itemQuant;
     }
 
+    public void adicionaItemQuant(Modelo m, int quant) { // precisa ter return esse método? porquê?
+        ItemQuant novoItem = new ItemQuant(m, quant, this);
+        if (m == null || quant <= 0) {
+            throw new RuntimeException("Erro: modelo e/ou quantidade não podem ser null ou vazios");
+        } else {
+            this.itemQuant.add(novoItem);
+        }
+    }
 
-
-    // adicionaItemQuant(m: Modelo, quant: item): ItemQuant
-    // removeItemQuant(i: ItemQuant): void
+    public void removeItemQuant(ItemQuant i) {
+        if (i == null) {
+            throw new RuntimeException("Erro adiciona Computador: c não pode ser null");
+        } else {
+            this.itemQuant.remove(i);
+        }
+    }
 
     public float getPotencia() {
         return potencia;
     }
 
-    public float setPotencia(float potencia) {
+    public void setPotencia(float potencia) {
         this.potencia = potencia;
+    }
+
+    protected void addComputador(Computador c) {
+        if (c == null) {
+            throw new RuntimeException("Erro adiciona Computador: c não pode ser null");
+        } else {
+            this.computadores.add(c);
+        }
+    }
+
+    protected void removeComputador(Computador c) {
+        if (c == null) {
+            throw new RuntimeException("Erro remove Computador: c não pode ser null");
+        } else {
+            this.computadores.remove(c);
+        }
     }
 }

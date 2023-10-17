@@ -13,6 +13,9 @@ import java.util.List;
 public class Laboratorio {
     private int numero;
     private List<Computador> computadores = new ArrayList<Computador>();
+    private float potenciaTotal;
+    private int qtdComputadores;
+
     private Computador computador; // Linkando com classe Computador
 
     public Laboratorio(int numero) {
@@ -41,15 +44,16 @@ public class Laboratorio {
             throw new RuntimeException("Erro: Computador não pode ser nulo");
         } else {
             this.computadores.add(computador);
+            qtdComputadores += 1;
         }
     }
 
-    //quando remover um computador, implementar qtdcomputadores -1
     public void removeComputador(Computador computador) {
         if (computador == null) {
             throw new RuntimeException("Erro: Computador não pode ser nulo");
         } else {
             this.computadores.remove(computador);
+            qtdComputadores -= 1;
         }
     }
 
