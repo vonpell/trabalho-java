@@ -19,7 +19,6 @@ public class Configuracao {
     private float potencia;
     private List<ItemQuant> itemQuant = new ArrayList<ItemQuant>();
     private List<Computador> computadores = new ArrayList<Computador>();
-    private Computador computador;
 
     public Configuracao(String nome) {
         this.setNome(nome);

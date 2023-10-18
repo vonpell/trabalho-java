@@ -32,7 +32,11 @@ public class ItemQuant {
     }
 
     public void setModelo(Modelo modelo) {
-        this.modelo = modelo;
+        if (modelo == null) {
+            throw new RuntimeException("Erro Modelo: modelo não pode ser null");
+        } else {
+            this.modelo = modelo;
+        }
     }
 
     public float getPotencia() {
@@ -48,7 +52,11 @@ public class ItemQuant {
     }
 
     protected void setConfiguracao(Configuracao configuracao) {
-        this.configuracao = configuracao;
+        if (configuracao == null) {
+            throw new RuntimeException("Erro Configuração: configuração não pode ser null");
+        } else {
+            this.configuracao = configuracao;
+        }
     }
 
 }

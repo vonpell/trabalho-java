@@ -8,7 +8,7 @@
 public class Computador {
 
     private String serial;
-    private Configuracao nome;
+    private Configuracao configuracao;
     private float potencia;
     private int laboratorio;
 
@@ -33,11 +33,15 @@ public class Computador {
     }
 
     public Configuracao getConfiguração() {
-        return nome;
+        return configuracao;
     }
 
     public void setConfiguracao(Configuracao configuracao) {
-        this.nome = configuracao;
+        if (configuracao == null) {
+            throw new RuntimeException("Erro Configuração: configuração não pode ser null");
+        } else {
+            this.configuracao = configuracao;
+        }
     }
 
     public float getPotencia() {
