@@ -19,6 +19,7 @@ public class Screen02 {
         armazenamentoHD = new Tipo("HD");
         armazenamentoSSD = new Tipo("SSD");
 
+
         Marca Intel, AMD, ASUS, ZOTAC, Seagate, Kingston;
 
         Intel = new Marca("Intel");
@@ -27,6 +28,7 @@ public class Screen02 {
         ZOTAC = new Marca("ZOTAC");
         Seagate = new Marca("Seagate");
         Kingston = new Marca("Kingston");
+
 
         Modelo i5, i7, ryzen5, ryzen7, ASUS2060, ZOTAC4060, HDBarracuda, SSDKingston;
 
@@ -39,11 +41,20 @@ public class Screen02 {
         HDBarracuda = new Modelo("HD Seagate 1 TB SATA ST1000DM010", 5.3F, armazenamentoHD, Seagate);
         SSDKingston = new Modelo("SSD 1 TB Kingston Fury Renegade SFYRS", 6.3F, armazenamentoSSD, Kingston);
 
-        Laboratorio lab1, lab2, lab3;
+
+        Laboratorio lab1, lab2, lab3, lab4, labTeste;
 
         lab1 = new Laboratorio(101);
         lab2 = new Laboratorio(102);
         lab3 = new Laboratorio(103);
+        lab4 = new Laboratorio(104);
+        labTeste = lab4;
+
+        List<Laboratorio> listLaboratorios = new ArrayList<Laboratorio>();
+        listLaboratorios.add(lab1);
+        listLaboratorios.add(lab2);
+        listLaboratorios.add(lab3);
+
 
         Configuracao media1, media2, alta1, alta2;
 
@@ -51,6 +62,7 @@ public class Screen02 {
         media2 = new Configuracao("Config media performance AMD");
         alta1 = new Configuracao("Config alta performance Intel");
         alta2 = new Configuracao("Config alta performance AMD");
+
 
         media1.adicionaItemQuant(i5, 1);
         media1.adicionaItemQuant(ASUS2060, 1);
@@ -70,6 +82,7 @@ public class Screen02 {
         alta2.adicionaItemQuant(HDBarracuda, 1);
         alta2.adicionaItemQuant(SSDKingston, 1);
 
+
         Computador c1, c2, c3, c4, c5;
 
         c1 = new Computador("0001", alta1);
@@ -84,11 +97,28 @@ public class Screen02 {
         lab2.adicionaComputador(c5);
         lab3.adicionaComputador(c4);
 
-        List<Laboratorio> listLaboratorios = new ArrayList<Laboratorio>();
-        listLaboratorios.add(lab1);
-        listLaboratorios.add(lab2);
-        listLaboratorios.add(lab3);
 
+        System.out.println("Laboratórios disponíveis: ");
+        for (Laboratorio laboratorio : listLaboratorios) {
+            System.out.println("Lab " + laboratorio.getNumero());
+        }
+        System.out.println();
+        System.out.println("Digite o laboratório que você gostaria de consultar: ");
+        int labConsulta = scan.nextInt();
+        scan.nextLine();
 
+        int teste = 0;
+
+        for (Laboratorio laboratorio : listLaboratorios) {
+            if (labConsulta == laboratorio.getNumero()) {
+                teste = 1;
+                labTeste = laboratorio;
+                labTeste.getInfosLab(labTeste);
+            }
+        }
+
+        if (teste == 0) {
+            System.out.println("Laboratório não cadastrado.");
+        }
     }
 }

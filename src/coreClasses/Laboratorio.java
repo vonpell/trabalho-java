@@ -65,7 +65,7 @@ public class Laboratorio {
 
     public void adicionaComputador(Computador computador) {
         if (computador == null) {
-            throw new RuntimeException("Erro: coreClasses.Computador não pode ser nulo");
+            throw new RuntimeException("Erro: Computador não pode ser nulo");
         } else {
             this.listComputadores.add(computador);
             qtdComputadores += 1;
@@ -74,7 +74,7 @@ public class Laboratorio {
 
     public void removeComputador(Computador computador) {
         if (computador == null) {
-            throw new RuntimeException("Erro: coreClasses.Computador não pode ser nulo");
+            throw new RuntimeException("Erro: Computador não pode ser nulo");
         } else {
             this.listComputadores.remove(computador);
             qtdComputadores -= 1;

@@ -28,7 +28,7 @@ public class Screen01 {
         Seagate = new Marca("Seagate");
         Kingston = new Marca("Kingston");
 
-        Modelo i5, i7, ryzen5, ryzen7, ASUS2060, ZOTAC4060, HDBarracuda, SSDKingston;
+        Modelo i5, i7, ryzen5, ryzen7, ASUS2060, ZOTAC4060, HDBarracuda, SSDKingston, modeloAdicionar;
 
         i5 = new Modelo("i5 11450F", 70, processador, Intel);
         i7 = new Modelo("i7 10700K", 95, processador, Intel);
@@ -39,15 +39,15 @@ public class Screen01 {
         HDBarracuda = new Modelo("HD Seagate 1 TB SATA ST1000DM010", 5.3F, armazenamentoHD, Seagate);
         SSDKingston = new Modelo("SSD 1 TB Kingston Fury Renegade SFYRS", 6.3F, armazenamentoSSD, Kingston);
 
-        List<Modelo> modelosList = new ArrayList<Modelo>();
-        modelosList.add(i5);
-        modelosList.add(i7);
-        modelosList.add(ryzen5);
-        modelosList.add(ryzen7);
-        modelosList.add(ASUS2060);
-        modelosList.add(ZOTAC4060);
-        modelosList.add(HDBarracuda);
-        modelosList.add(SSDKingston);
+        List<Modelo> listModelos = new ArrayList<Modelo>();
+        listModelos.add(i5);
+        listModelos.add(i7);
+        listModelos.add(ryzen5);
+        listModelos.add(ryzen7);
+        listModelos.add(ASUS2060);
+        listModelos.add(ZOTAC4060);
+        listModelos.add(HDBarracuda);
+        listModelos.add(SSDKingston);
 
         Laboratorio lab1, lab2, lab3, labExistente;
 
@@ -63,6 +63,7 @@ public class Screen01 {
         alta1 = new Configuracao("Config alta performance Intel");
         alta2 = new Configuracao("Config alta performance AMD");
         configExistente = media1;
+        configNova = new Configuracao("Nova Config");
 
         List<Configuracao> listConfig = new ArrayList<Configuracao>();
         listConfig.add(media1);
@@ -89,14 +90,14 @@ public class Screen01 {
         alta2.adicionaItemQuant(HDBarracuda, 1);
         alta2.adicionaItemQuant(SSDKingston, 1);
 
-        Computador c1, c2, c3, c4, c5, c6, c7;
+        Computador c1, c2, c3, c4, c5, c6;
 
         c1 = new Computador("0001", alta1);
         c2 = new Computador("0002", media1);
         c3 = new Computador("0003", media2);
         c4 = new Computador("0004", alta2);
         c5 = new Computador("0005", alta1);
-        c6 = new Computador("0006", media1);
+        c6 = new Computador("0006", configNova);
 
         List<Computador> listComps = new ArrayList<Computador>();
         listComps.add(c1);
@@ -152,57 +153,7 @@ public class Screen01 {
             } else {
                 System.out.println("Config escolhida: " + configExistente.getNome());
             }
-            teste = 0;
 
-            System.out.println();
-
-            System.out.println("Agora vamos cadastrar um novo computador com essa configuração.");
-            System.out.println("Digite o número serial: ");
-
-            String seri = scan.nextLine();
-
-            for (Computador computador : listComps) {
-                if (seri.equals(computador.getSerial())) {
-                    System.out.println("Número serial já existe.");
-                    teste = 1;
-                }
-            }
-
-            if (teste == 1) {
-                seri = c6.getSerial();
-                System.out.println("Serial aplicado: " + seri);
-            } else {
-                c6.setSerial(seri);
-                System.out.println("Serial armazenado: " + c6.getSerial());
-            }
-            teste = 0;
-
-            System.out.println();
-
-            System.out.println("Agora vamos cadastrar esse computador em um Laboratório.");
-            System.out.println("Laboratórios disponíveis: ");
-            for (Laboratorio laboratorio : listLaboratorios) {
-                System.out.println("Laboratório " + laboratorio.getNumero());
-            }
-            System.out.println("Digite o labatório escolhido: ");
-            int lab = scan.nextInt();
-            scan.nextLine();
-
-            for (Laboratorio laboratorio : listLaboratorios) {
-                if (lab == laboratorio.getNumero()) {
-                    teste = 1;
-                    labExistente.setNumero(lab);
-                    break;
-                }
-            }
-
-            if (teste == 1) {
-                labExistente.adicionaComputador(c6);
-                System.out.println("Computador adicionado ao lab: " + labExistente.getNumero());
-            } else {
-                System.out.println("Lab não encontrado. Lab default aplicado.");
-                System.out.println("Computador adicionado ao lab: " + labExistente.getNumero());
-            }
         } else {
             System.out.println("Vamos adicionar uma nova configuração.");
             System.out.println();
@@ -210,18 +161,114 @@ public class Screen01 {
             System.out.println("Digite o nome da nova configuração: ");
             String novaConf = scan.nextLine();
 
-            configNova = new Configuracao(novaConf);
+            configNova.setNome(novaConf);
 
             System.out.println();
             System.out.println("Agora vamos adicionar itens à configuração");
-
-
-
-            int resposta = 1;
-            while (resposta == 1) {
-
+            System.out.println("Nomes de modelos, tipos e marcas disponíveis: ");
+            for (Modelo modelo : listModelos) {
+                System.out.println(modelo.getNome() + ", " + modelo.getTipo().getNome() + ", " + modelo.getMarca().getNome());
             }
 
+            int resposta = 1;
+            String modelo1;
+            int quanti;
+
+            while (resposta == 1) {
+                teste = 5;
+                System.out.println("Digite o nome do modelo que você gostaria de adicionar da lista acima à nova config: ");
+                modelo1 = scan.nextLine();
+                System.out.println("Digite a quantidade a adicionar deste modelo à config: ");
+                quanti = scan.nextInt();
+                scan.nextLine();
+
+                for (Modelo modelo : listModelos) {
+                    if (modelo1.equals(modelo.getNome())) {
+                        modeloAdicionar = modelo;
+                        teste = 1;
+                        configNova.adicionaItemQuant(modeloAdicionar, quanti);
+                    }
+                }
+                if (teste == 5) {
+                    System.out.println("Modelo não encontrado.");
+                }
+
+                System.out.println("Gostaria de adicionar outro item?");
+                System.out.println("Digite 1 para Sim ou 2 para Não: ");
+                resposta = scan.nextInt();
+                scan.nextLine();
+
+                if (resposta != 1 && resposta != 2) {
+                    System.out.println("Resposta inválida.");
+                }
+
+                while (resposta != 1 && resposta != 2) {
+                    System.out.println("Gostaria de adicionar outro item?");
+                    System.out.println("Digite 1 para Sim ou 2 para Não: ");
+                    resposta = scan.nextInt();
+                    scan.nextLine();
+                }
+            }
+            System.out.println();
+            System.out.println("Config cadastrada: ");
+            for (ItemQuant itemQuant : configNova.listItemQuant()) {
+                System.out.println("Nome do modelo, tipo, marca: " + itemQuant.getModelo().getNome() +
+                        ", " + itemQuant.getModelo().getTipo().getNome() +
+                        ", " + itemQuant.getModelo().getMarca().getNome() +
+                        ", " + itemQuant.getQuant()
+                );
+            }
         }
+        System.out.println();
+        System.out.println("Agora vamos cadastrar um novo computador com essa configuração.");
+        System.out.println("Digite o número serial: ");
+
+        teste = 0;
+        String seri2 = scan.nextLine();
+
+        for (Computador computador : listComps) {
+            if (seri2.equals(computador.getSerial())) {
+                System.out.println("Número serial já existe.");
+                teste = 1;
+            }
+        }
+
+        if (teste == 1) {
+            seri2 = c6.getSerial();
+            System.out.println("Serial aplicado: " + seri2);
+        } else {
+            c6.setSerial(seri2);
+            System.out.println("Serial armazenado: " + c6.getSerial());
+        }
+        teste = 0;
+
+        System.out.println();
+
+        System.out.println("Agora vamos cadastrar esse computador em um Laboratório.");
+        System.out.println("Laboratórios disponíveis: ");
+        for (Laboratorio laboratorio : listLaboratorios) {
+            System.out.println("Laboratório " + laboratorio.getNumero());
+        }
+        System.out.println("Digite o labatório escolhido: ");
+        int lab = scan.nextInt();
+        scan.nextLine();
+
+        for (Laboratorio laboratorio : listLaboratorios) {
+            if (lab == laboratorio.getNumero()) {
+                teste = 1;
+                labExistente.setNumero(lab);
+                break;
+            }
+        }
+
+        if (teste == 1) {
+            labExistente.adicionaComputador(c6);
+            System.out.println("Computador adicionado ao lab: " + labExistente.getNumero());
+        } else {
+            System.out.println("Lab não encontrado. Lab default aplicado.");
+            System.out.println("Computador adicionado ao lab: " + labExistente.getNumero());
+        }
+
+        labExistente.getInfosLab(labExistente);
     }
 }

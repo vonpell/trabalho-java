@@ -121,15 +121,9 @@ public class TesteLaboratorio {
         lab1.getInfosLab(lab1);
 
 
-        /* for (Laboratorio laboratorio : listLaboratorios) {
-            System.out.println("");
-            System.out.println("Laboratório: " + laboratorio.getNumero());
-            laboratorio.getInfosLab();
-        } */
-
         // Questão 9:
 
-        System.out.println("");
+        System.out.println();
         System.out.println("Questão 9.");
         System.out.println("Potência Total Lab 101: " + lab1.potenciaTotal());
         System.out.println("Potência Total Lab 102: " + lab2.potenciaTotal());
@@ -137,7 +131,7 @@ public class TesteLaboratorio {
 
         // Questão 10:
 
-        System.out.println("");
+        System.out.println();
         System.out.println("Questão 10.");
         System.out.println("Config anterior computador c1: " + c1.getConfiguracao().getNome());
         c1.setConfiguracao(alta2);
@@ -151,14 +145,14 @@ public class TesteLaboratorio {
         listLaboratorios.add(lab2);
         listLaboratorios.add(lab3);
 
-        System.out.println("");
+        System.out.println();
         System.out.println("Questão 11.");
         System.out.println("Modelo: " + HDBarracuda.getNome());
         for (Laboratorio laboratorio : listLaboratorios) {
             laboratorio.getLabByModelo(HDBarracuda);
         }
 
-        System.out.println("");
+        System.out.println();
         System.out.println("Modelo: " + ASUS2060.getNome());
         for (Laboratorio laboratorio : listLaboratorios) {
             laboratorio.getLabByModelo(ASUS2060);

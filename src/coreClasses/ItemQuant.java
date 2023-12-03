@@ -38,7 +38,7 @@ public class ItemQuant {
 
     public void setModelo(Modelo modelo) {
         if (modelo == null) {
-            throw new RuntimeException("Erro coreClasses.Modelo: modelo não pode ser null");
+            throw new RuntimeException("Erro Modelo: modelo não pode ser null");
         } else {
             this.modelo = modelo;
         }
