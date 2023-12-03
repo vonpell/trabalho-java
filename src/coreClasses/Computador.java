@@ -1,10 +1,11 @@
-// Classe Computador - int serial
-// Computador (s: String, conf: Configuração)
+// Classe coreClasses.Computador - int serial
+// coreClasses.Computador (s: String, conf: Configuração)
 // getSerial(): String
 // getConfiguração(): Configuração
 // setConfiguração (conf: Configuração): void
 // potencia(): float
 
+package coreClasses;
 public class Computador {
 
 	private String serial;
@@ -29,7 +30,7 @@ public class Computador {
 		}
 	}
 
-	public Configuracao getConfiguração() {
+	public Configuracao getConfiguracao() {
 		return configuracao;
 	}
 

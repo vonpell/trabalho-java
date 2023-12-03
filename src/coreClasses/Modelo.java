@@ -1,11 +1,12 @@
-// Classe Modelo - String nome, float potencia
-// Modelo (String nome, float potencia, Tipo t, Marca marca)
+// Classe coreClasses.Modelo - String nome, float potencia
+// coreClasses.Modelo (String nome, float potencia, coreClasses.Tipo t, coreClasses.Marca marca)
 // getNome(): String
 // getPotencia(): float
-// getConfiguracao(): List<Configuracao>(): void
-// protected addItemQuant(ItemQuant i): void
-// protected removeItemQuant(ItemQuant i): void
+// getConfiguracao(): List<coreClasses.Configuracao>(): void
+// protected addItemQuant(coreClasses.ItemQuant i): void
+// protected removeItemQuant(coreClasses.ItemQuant i): void
 
+package coreClasses;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,6 @@ public class Modelo {
 	private String nome;
 	private float potencia;
 	private List<ItemQuant> itemQuant = new ArrayList<ItemQuant>();
-	private List<Configuracao> listConfiguracao = new ArrayList<Configuracao>();
 	private Tipo tipo;
 	private Marca marca;
 
@@ -73,10 +73,6 @@ public class Modelo {
 		} else {
 			this.marca = marca;
 		}
-	}
-
-	public List<Configuracao> getConfiguracoes() {
-		return listConfiguracao;
 	}
 
 	protected void addItemQuant(ItemQuant i) {

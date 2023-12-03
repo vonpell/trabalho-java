@@ -1,14 +1,15 @@
-// Classe Configuracao - String nome - ok
-// Configuracao (n: String) - ok
+// Classe coreClasses.Configuracao - String nome - ok
+// coreClasses.Configuracao (n: String) - ok
 // getNome(): String - ok
-// getComputadores(): List<Computador> - ok
-// adicionaItemQuant(m: Modelo, quant: item): ItemQuant
-// removeItemQuant(i: ItemQuant): void
+// getComputadores(): List<coreClasses.Computador> - ok
+// adicionaItemQuant(m: coreClasses.Modelo, quant: item): coreClasses.ItemQuant
+// removeItemQuant(i: coreClasses.ItemQuant): void
 // potencia(): float - ok
-// listItemQuant(): List<ItemQuant> - ok
-// #addComputador(c: Computador): void
-// #removeComputador(c: Computador): void
+// listItemQuant(): List<coreClasses.ItemQuant> - ok
+// #addComputador(c: coreClasses.Computador): void
+// #removeComputador(c: coreClasses.Computador): void
 
+package coreClasses;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class Configuracao {
 		return listItemQuant;
 	}
 
-	public void adicionaItemQuant(Modelo m, int quant) { // precisa ter return esse método? porquê?
+	public void adicionaItemQuant(Modelo m, int quant) {
 		ItemQuant novoItem = new ItemQuant(m, quant, this);
 		if (m == null || quant <= 0) {
 			throw new RuntimeException("Erro: modelo e/ou quantidade não podem ser null ou vazios");

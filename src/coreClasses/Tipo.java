@@ -1,3 +1,5 @@
+package coreClasses;
+
 public class Tipo {
 
 	private String nome;

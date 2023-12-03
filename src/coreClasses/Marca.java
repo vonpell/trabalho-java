@@ -1,3 +1,5 @@
+package coreClasses;
+
 public class Marca {
 
 	private String nome;
