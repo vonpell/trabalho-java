@@ -12,6 +12,8 @@ public class Screen01 {
 
     public static void main(String[] args) {
 
+        Screen02 screen02;
+
         Tipo processador, placaVideo, armazenamentoHD, armazenamentoSSD;
 
         processador = new Tipo("Processador");
@@ -97,7 +99,7 @@ public class Screen01 {
         c3 = new Computador("0003", media2);
         c4 = new Computador("0004", alta2);
         c5 = new Computador("0005", alta1);
-        c6 = new Computador("0006", configNova);
+        c6 = new Computador("0006", configExistente);
 
         List<Computador> listComps = new ArrayList<Computador>();
         listComps.add(c1);
@@ -123,7 +125,7 @@ public class Screen01 {
         System.out.println("1 - Adicionar uma configuração existente ou");
         System.out.println("2 - Adicionar uma nova configuração");
         System.out.println("Digite: ");
-        float f = scan.nextFloat();
+        int f = scan.nextInt();
         scan.nextLine();
         if (f != 1 && f != 2) {
             System.out.println("Opção inválida.");
@@ -210,6 +212,7 @@ public class Screen01 {
                 }
             }
             System.out.println();
+            c6.setConfiguracao(configNova);
             System.out.println("Config cadastrada: ");
             for (ItemQuant itemQuant : configNova.listItemQuant()) {
                 System.out.println("Nome do modelo, tipo, marca: " + itemQuant.getModelo().getNome() +
@@ -219,6 +222,7 @@ public class Screen01 {
                 );
             }
         }
+
         System.out.println();
         System.out.println("Agora vamos cadastrar um novo computador com essa configuração.");
         System.out.println("Digite o número serial: ");
@@ -256,7 +260,7 @@ public class Screen01 {
         for (Laboratorio laboratorio : listLaboratorios) {
             if (lab == laboratorio.getNumero()) {
                 teste = 1;
-                labExistente.setNumero(lab);
+                labExistente = laboratorio;
                 break;
             }
         }
@@ -265,10 +269,14 @@ public class Screen01 {
             labExistente.adicionaComputador(c6);
             System.out.println("Computador adicionado ao lab: " + labExistente.getNumero());
         } else {
+            labExistente.adicionaComputador(c6);
             System.out.println("Lab não encontrado. Lab default aplicado.");
             System.out.println("Computador adicionado ao lab: " + labExistente.getNumero());
         }
 
+        System.out.println();
+
+        System.out.println("Computadores do laboratório:");
         labExistente.getInfosLab(labExistente);
     }
 }

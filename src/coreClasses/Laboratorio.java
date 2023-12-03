@@ -39,7 +39,7 @@ public class Laboratorio {
 
     public void getInfosLab(Laboratorio laboratorio) {
         for (Computador computador : listComputadores) {
-            System.out.println("");
+            System.out.println();
             System.out.println("Computador serial: " + computador.getSerial());
             for (ItemQuant itemQuant : computador.getConfiguracao().listItemQuant()) {
                 System.out.println("-");
