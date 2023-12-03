@@ -215,7 +215,7 @@ public class Screen01 {
             c6.setConfiguracao(configNova);
             System.out.println("Config cadastrada: ");
             for (ItemQuant itemQuant : configNova.listItemQuant()) {
-                System.out.println("Nome do modelo, tipo, marca: " + itemQuant.getModelo().getNome() +
+                System.out.println("Nome do modelo, tipo, marca, qtd: " + itemQuant.getModelo().getNome() +
                         ", " + itemQuant.getModelo().getTipo().getNome() +
                         ", " + itemQuant.getModelo().getMarca().getNome() +
                         ", " + itemQuant.getQuant()
